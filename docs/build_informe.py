@@ -209,8 +209,9 @@ def construir() -> Path:
     for texto, tamano in [
         ("Rubén Dario Lozano Contreras", 14),
         ("Grupo: 213022_974", 11.5),
+        ("Centro: Gachetá", 11.5),
         ("Ingeniería en Inteligencia Artificial y Ciencia de Datos", 11.5),
-        ("Tutor: Alfredo Jesús Castro Guzman", 11.5),
+        ("Tutor: Alfredo Jesús Castro Guzmán", 11.5),
     ]:
         p = doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
