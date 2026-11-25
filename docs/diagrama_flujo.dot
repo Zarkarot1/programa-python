@@ -1,0 +1,30 @@
+digraph flujo {
+  rankdir=TB;
+  graph [fontname="DejaVu Sans", bgcolor="white", pad="0.3", nodesep="0.35", ranksep="0.45"];
+  node [fontname="DejaVu Sans", fontsize=12, shape=box, style="rounded,filled", fillcolor="#EAF2FB", color="#2C5F8A", penwidth=1.4];
+  edge [fontname="DejaVu Sans", fontsize=11, color="#2C5F8A"];
+
+  inicio [label="Inicio", shape=oval, fillcolor="#2C5F8A", fontcolor="white"];
+  leer [label="Leer matriz de sesiones\n[ID, duración, clics]"];
+  validar [label="Validar fila:\n3 columnas, enteros no negativos"];
+  error [label="Mostrar error", fillcolor="#F8D7DA", color="#B02A37"];
+  alto [label="¿duración > 180 s\ny clics > 8?", shape=diamond, fillcolor="#FFF3CD", color="#B8860B"];
+  bajo [label="¿duración < 60 s\no clics < 3?", shape=diamond, fillcolor="#FFF3CD", color="#B8860B"];
+  clas_alto [label="Clasificación = Alto", fillcolor="#D4EDDA", color="#2E7D32"];
+  clas_bajo [label="Clasificación = Bajo", fillcolor="#D4EDDA", color="#2E7D32"];
+  clas_medio [label="Clasificación = Medio", fillcolor="#D4EDDA", color="#2E7D32"];
+  guardar [label="Agregar (ID, clasificación)\nal informe"];
+  fin [label="Mostrar informe y fin", shape=oval, fillcolor="#2C5F8A", fontcolor="white"];
+
+  inicio -> leer -> validar;
+  validar -> error [label="inválida"];
+  validar -> alto [label="válida"];
+  alto -> clas_alto [label="Sí"];
+  alto -> bajo [label="No"];
+  bajo -> clas_bajo [label="Sí"];
+  bajo -> clas_medio [label="No"];
+  clas_alto -> guardar;
+  clas_bajo -> guardar;
+  clas_medio -> guardar;
+  guardar -> fin;
+}
